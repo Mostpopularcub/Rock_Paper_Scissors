@@ -19,4 +19,18 @@ function intermediateFunction(num) {
 }
 function getComputerChoice() {
   return intermediateFunction((getRandomInt(3)))}
-console.log(getComputerChoice())
+
+
+
+function getHumanChoice() {
+  let choice = prompt("Choose rock, paper or scissors");
+  if (choice='rock'){
+    return 'rock'
+  }
+  else {
+    return 'trryx'
+  }
+}
+
+console.log(getHumanChoice())
+
