@@ -20,17 +20,12 @@ function intermediateFunction(num) {
 function getComputerChoice() {
   return intermediateFunction((getRandomInt(3)))}
 
-
+console.log(getComputerChoice());
 
 function getHumanChoice() {
   let choice = prompt("Choose rock, paper or scissors");
-  if (choice='rock'){
-    return 'rock'
-  }
-  else {
-    return 'trryx'
-  }
+  return choice.toLowerCase();
 }
 
-console.log(getHumanChoice())
+console.log(getHumanChoice());
 
