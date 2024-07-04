@@ -35,30 +35,24 @@ function playRound(humanChoice, computerChoice) {
   if (humanChoice==computerChoice) {
     return "Draw";
   }
-  else if (humanChoice=='rock' && computerChoice=='scissors'){
+  else if ((humanChoice=='rock' && computerChoice=='scissors')
+    ||(humanChoice=='paper' && computerChoice=='rock')
+    ||(humanChoice=='scissors' && computerChoice=='paper')){
     return "Player Win";
   }
-  else if (humanChoice=='paper' && computerChoice=='rock'){
-    return "Player Win";
-  }
-  else if (humanChoice=='scissors' && computerChoice=='paper'){
-    return "Player Win";
-  }
-  else if (humanChoice=='rock' && computerChoice=='paper'){
+  
+  else if ((humanChoice=='rock' && computerChoice=='paper')
+    ||(humanChoice=='paper' && computerChoice=='scissors')
+    ||(humanChoice=='paper' && computerChoice=='scissors')){
     return "Computer Win";
   }
-  else if (humanChoice=='paper' && computerChoice=='scissors'){
-    return "Computer Win";
-  }
-  else if (humanChoice=='paper' && computerChoice=='scissors'){
-    return "Computer Win";
-  }
+  
   else {
-    return "Choose rock, paper, or scissors"
+    return "Choose rock, paper, or scissors";
   }
   }
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-console.log(playRound(humanSelection, computerSelection));
+console.log(playRound(humanSelection,computerSelection));
