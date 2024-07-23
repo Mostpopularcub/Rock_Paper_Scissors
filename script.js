@@ -21,11 +21,10 @@ function getComputerChoice() {
   return intermediateFunction((getRandomInt(3)))}
 
 
-  function getHumanChoice() {
+function getHumanChoice() {
   let choice = prompt("Choose rock, paper or scissors");
   return choice.toLowerCase();
 }
-
 
 let humanScore = 0;
 let computerScore = 0;
@@ -33,26 +32,32 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice) {
   // your code here!
   if (humanChoice==computerChoice) {
-    return "Draw";
+    console.log("Draw");
   }
   else if ((humanChoice=='rock' && computerChoice=='scissors')
     ||(humanChoice=='paper' && computerChoice=='rock')
     ||(humanChoice=='scissors' && computerChoice=='paper')){
-    return "Player Win";
+    console.log("Player Win");
+    humanScore++;
+    console.log(humanScore);
+    console.log(computerScore);
   }
   
   else if ((humanChoice=='rock' && computerChoice=='paper')
     ||(humanChoice=='paper' && computerChoice=='scissors')
     ||(humanChoice=='paper' && computerChoice=='scissors')){
-    return "Computer Win";
+    console.log("Computer Win");
+    computerScore++;
+    console.log(humanScore);
+    console.log(computerScore);
   }
   
   else {
-    return "Choose rock, paper, or scissors";
+    console.log("Invalid option");
   }
   }
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-console.log(playRound(humanSelection,computerSelection));
+console.log(playRound(humanSelection, computerSelection))
