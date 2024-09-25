@@ -11,20 +11,15 @@ function intermediateFunction(num) {
       else if (num == 1) {
       result = 'paper' 
       }
-      else {
+      else if (num == 2){
       result = 'scissors';
       }
   return result;
 
 }
+
 function getComputerChoice() {
   return intermediateFunction((getRandomInt(3)))}
-
-
-function getHumanChoice() {
-  let choice = prompt("Choose rock, paper or scissors");
-  return choice.toLowerCase();
-}
 
 let humanScore = 0;
 let computerScore = 0;
@@ -32,67 +27,70 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice) {
   // your code here!
   if (humanChoice==computerChoice) {
-    console.log("Draw");
-    console.log("Player Score:" + humanScore);
-    console.log("Computer Score:" + computerScore);
+    alert("Draw");
   }
   else if ((humanChoice=='rock' && computerChoice=='scissors')
     ||(humanChoice=='paper' && computerChoice=='rock')
     ||(humanChoice=='scissors' && computerChoice=='paper')){
-    console.log("Player Win");
+    alert("Player Win");
     humanScore++;
-    console.log("Player Score:" + humanScore);
-    console.log("Computer Score:" + computerScore);
   }
   
   else if ((humanChoice=='rock' && computerChoice=='paper')
     ||(humanChoice=='paper' && computerChoice=='scissors')
-    ||(humanChoice=='paper' && computerChoice=='scissors')){
-    console.log("Computer Win");
+    ||(humanChoice=='scissors' && computerChoice=='rock')){
+    alert("Computer Win");
     computerScore++;
-    console.log("Player Score:" + humanScore);
-    console.log("Computer Score:" + computerScore);
+
+
   }
+  let playerRecord = document.querySelector("#playerRecord");
+  playerRecord.textContent = "Player Record: " + humanScore;
   
-  else {
-    console.log("Invalid option");
-  }
+  let computerRecord = document.querySelector("#computerRecord");
+  computerRecord.textContent = "Computer Record: " + computerScore;
+
+  declareWinner();
+
   }
 
-let humanSelection = getHumanChoice();
+let humanSelection = 'rock'
+let humanSelection2 = 'paper'
+let humanSelection3 = 'scissors'
 let computerSelection = getComputerChoice();
 
-let humanSelection2 = getHumanChoice();
-let computerSelection2 = getComputerChoice();
-
-let humanSelection3 = getHumanChoice();
-let computerSelection3 = getComputerChoice();
-
-let humanSelection4 = getHumanChoice();
-let computerSelection4 = getComputerChoice();
-
-let humanSelection5 = getHumanChoice();
-let computerSelection5 = getComputerChoice();
-
 function declareWinner(){
-  if (humanScore>computerScore) {
-    console.log("Player Wins The Game!")
+  if (humanScore===5) {
+    alert("Player Wins The Game!");
+    humanScore = 0;
+    computerScore = 0;
   }
-  else if (humanScore<computerScore) {
-    console.log("Computer Wins The Game...")
+  if (computerScore===5) {
+    alert("Computer Wins The Game..."),
+    humanScore = 0;
+    computerScore = 0;
+
   }
-  else {
-    console.log("Drawn Game")
-  }
+  
 }
 
-function playGame(){
-  playRound(humanSelection,computerSelection);
-  playRound(humanSelection2,computerSelection2);
-  playRound(humanSelection3,computerSelection3);
-  playRound(humanSelection4,computerSelection4);
-  playRound(humanSelection5,computerSelection5);
-  declareWinner();
-}
+const rock = document.querySelector("#rock");
+rock.addEventListener("click", () => {
+  playRound(humanSelection,getComputerChoice())
+});
 
-console.log(playGame())
+const paper = document.querySelector("#paper");
+paper.addEventListener("click", () => {
+  playRound(humanSelection2,getComputerChoice())
+});
+
+const scissors = document.querySelector("#scissors");
+scissors.addEventListener("click", () => {
+  playRound(humanSelection3,getComputerChoice())
+});
+
+let playerRecord = document.querySelector("#playerRecord")
+playerRecord.textContent = "Player Record: " + humanScore
+
+let computerRecord = document.querySelector("#computerRecord")
+computerRecord.textContent = "Computer Record: " + computerScore
